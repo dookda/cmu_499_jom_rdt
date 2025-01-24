@@ -23,7 +23,8 @@ services:
       - "5200:5200"
     volumes:
       - ./python:/app
-    command: /bin/bash -c "pip install -r requirements.txt && python app.py"
+    # command: /bin/bash -c "pip install -r requirements.txt && python app.py"
+    command: /bin/bash -c "python app.py"
 
   nodejs:
     image: node:latest
