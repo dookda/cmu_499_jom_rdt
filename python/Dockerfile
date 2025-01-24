@@ -22,7 +22,7 @@ RUN pip install ultralytics
 WORKDIR /app
 
 # Install Python dependencies (optional if you want to do it here rather than in docker-compose)
-# RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
 # By default, do nothing (or you can set a default command)
 CMD ["/bin/bash"]
