@@ -22,10 +22,10 @@ app = Flask(__name__)
 
 
 @app.route('/pdt/bbox/<float:x1>/<float:y1>', methods=['GET'])
-def hello_world(x1,y1):
+def hello_world(x1, y1):
     a = x1 + y1
-    print(x1,y1)
-    return 'result: '+ str(a)
+    print(x1, y1)
+    return 'result: ' + str(a)
 
 
 @app.route('/pdt/roofdetect', methods=['POST'])
@@ -86,13 +86,14 @@ def roofdetect():
 
     current_date = datetime.now()
     int_date = int(current_date.strftime('%Y%m%d%H%M'))
-    
-    combined_geojson_output_file = "combined_segments" + str(int_date) +".geojson"
+
+    combined_geojson_output_file = "combined_segments" + \
+        str(int_date) + ".geojson"
     combined_gdf.to_file(combined_geojson_output_file, driver='GeoJSON')
-    
-    combined_shp_output_file = "cb" + str(int_date) 
+
+    combined_shp_output_file = "cb" + str(int_date)
     combined_gdf.to_file(combined_shp_output_file, driver='ESRI Shapefile')
-    
+
     import shutil
 
     # Path to the folder you want to zip
@@ -103,8 +104,8 @@ def roofdetect():
     # Zip the folder
     shutil.make_archive(output_zip_file, 'zip', folder_to_zip)
 
-    gdf = gpd.read_file(combined_geojson_output_file) 
-    combined_gdf.set_crs('EPSG:3857') 
+    gdf = gpd.read_file(combined_geojson_output_file)
+    combined_gdf.set_crs('EPSG:3857')
     target_crs = 'EPSG:4326'
     gdf_transformed = combined_gdf.to_crs(target_crs)
 
@@ -121,6 +122,7 @@ def roofdetect():
         print(f"Folder '{folderName}' does not exist.")
 
     return jsonify(gdf_transformed.to_json())
+
 
 def roofdetectback(bbox):
     # bbox = request.get_json()['bbox']
@@ -179,14 +181,14 @@ def roofdetectback(bbox):
 
     current_date = datetime.now()
     int_date = int(current_date.strftime('%Y%m%d%H%M'))
-    
-    combined_geojson_output_file = "cb" + str(int_date) +".geojson"   
-    combined_shp_output_file = "cb" + str(int_date) 
+
+    combined_geojson_output_file = "cb" + str(int_date) + ".geojson"
+    combined_shp_output_file = "cb" + str(int_date)
     combined_gdf.to_file(combined_geojson_output_file, driver='GeoJSON')
     combined_gdf.to_file(combined_shp_output_file, driver='ESRI Shapefile')
 
-    gdf = gpd.read_file(combined_geojson_output_file) 
-    combined_gdf.set_crs('EPSG:3857') 
+    gdf = gpd.read_file(combined_geojson_output_file)
+    combined_gdf.set_crs('EPSG:3857')
     target_crs = 'EPSG:4326'
     gdf_transformed = combined_gdf.to_crs(target_crs)
 
@@ -203,5 +205,5 @@ def roofdetectback(bbox):
 
 
 if __name__ == '__main__':
-  
+
     app.run(host='0.0.0.0', port=5200, debug=True)

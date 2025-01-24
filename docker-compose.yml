@@ -14,11 +14,11 @@ services:
   #     - ./postgis:/docker-entrypoint-initdb.d
 
   python:
-    image: giswqs/segment-geospatial:latest
     container_name: rdt_python
+    build:
+      context: .
+      dockerfile: Dockerfile
     working_dir: /app
-    # depends_on:
-    #   - postgis
     ports:
       - "5200:5200"
     volumes:
