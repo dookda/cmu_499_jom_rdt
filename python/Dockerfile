@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y libglib2.0-0 && rm -rf /var/lib/apt/lis
 RUN apt-get update && apt-get install libgl1-mesa-glx libopencv-dev -y
 RUN pip install opencv-python-headless
 RUN pip install Flask==3.0.3
-RUN pip ultralytics
+RUN pip install ultralytics
 
 # Switch back to the original user if needed 
 # (the base image might have used a specific user for security)
