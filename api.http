@@ -1,0 +1,10 @@
+GET http://localhost:5100/bbox/100.55/20.77
+
+
+###
+POST http://localhost:5200/roofdetect HTTP/1.1
+content-type: application/json
+
+{
+    "bbox": [98.98256370041973, 18.78962855608318, 98.98415592531632, 18.79059525263044]
+}

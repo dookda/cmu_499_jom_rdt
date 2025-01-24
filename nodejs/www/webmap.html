@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROOFDETECTION TRIYAKUL.</title>
+    <link rel="icon" type="image/x-icon" href="image/2.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.grid/dist/Leaflet.Grid.css" />
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="map.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+        <a class="navbar-brand" href="index.html">
+            <img src=" logo2-1.png" alt="TRIYAKUL Logo" class="logo-img" style="height: 3vh">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </nav>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Info Box -->
+    <div class="info-box">รายละเอียดประเภทหลังคา
+        <div id="toggleInfoBox" class="icon-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div id="infoContent" class="info-content">
+            <div>
+                <label for="mapClick">ค่าพิกัดละติจูด ลองจิจูด</label>
+                <input type="text" class="form-control" id="mapClick" readonly>
+            </div>
+            <div>
+                <label for="mapZoom">Zoom Level</label>
+                <input type="text" class="form-control" id="mapZoom" readonly>
+            </div>
+            <div>
+                <label for="metalRoof">
+                    <span
+                        style="display:inline-block; width:10px; height:10px; background-color:yellow; border-radius:50%; margin-right:5px;"></span>
+                    รวมหลังคาประเภทเหล็ก Metal Roof
+                </label>
+                <input type="text" class="form-control" id="metalRoof" readonly>
+            </div>
+            <div>
+                <label for="concreteRoof">
+                    <span
+                        style="display:inline-block; width:10px; height:10px; background-color:green; border-radius:50%; margin-right:5px;"></span>
+                    รวมหลังคาประเภทคอนกรีต Concrete Roof
+                </label>
+                <input type="text" class="form-control" id="concreteRoof" readonly>
+            </div>
+            <div>
+                <label for="cementRoof">
+                    <span
+                        style="display:inline-block; width:10px; height:10px; background-color:pink; border-radius:50%; margin-right:5px;"></span>
+                    รวมหลังคาประเภทกระเบื้อง Cement Roof
+                </label>
+                <input type="text" class="form-control" id="cementRoof" readonly>
+            </div>
+            <div>
+                <label for="otherRoof">
+                    <span
+                        style="display:inline-block; width:10px; height:10px; background-color:blue; border-radius:50%; margin-right:5px;"></span>
+                    รวมหลังคาประเภทอื่นๆ Other Roof
+                </label>
+                <input type="text" class="form-control" id="otherRoof" readonly>
+            </div>
+            <div>
+                <label for="totalRoof">รวมหลังคาทั้งหมด</label>
+                <input type="text" class="form-control" id="totalroof" readonly>
+            </div>
+            <div>
+                <a class="btn btn-success" href="./data/roof.zip" id="calculateRoof" class="btn btn-primary">Download
+                    Shapefile</a>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" style="display: none;">
+        <div id="loading-message">กำลังประมวลผล...</div>
+    </div>
+
+</body>
+
+
+
+
+
+
+
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.72.0/src/L.Control.Locate.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+<script src="https://unpkg.com/leaflet.gridlayer.googlemutant/leaflet.gridlayer.googlemutant.js"></script>
+<script src="https://unpkg.com/leaflet.grid/dist/Leaflet.Grid.js"></script>
+<script src="./polygon.js"></script>
+<script src="map.js"></script>
+
+</html>

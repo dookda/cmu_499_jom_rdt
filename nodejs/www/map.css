@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    /* Specify your font family here */
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 0px);
+    z-index: 0;
+}
+
+.info-box {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+    position: absolute;
+    top: 3vh;
+    right: 10px;
+    background: #ffffffe0;
+    padding: 10px;
+    padding-bottom: 0px;
+    border: 1px solid #ffffff;
+    z-index: 1000;
+    border-radius: 14px;
+}
+
+.leaflet-control-layers {
+    border: 2px solid #000;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.leaflet-touch .leaflet-control-layers-toggle {
+    width: 50px;
+    height: 50px;
+}
+
+.leaflet-top {
+    top: 11vh;
+}
+
+/* Navbar styling */
+.navbar-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Ensure navbar is above other content */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Black with 50% opacity */
+    /* Optional: set a background color for the navbar */
+}
+
+
+.navbar-brand {
+    margin-right: 80rem;
+}
+
+.navbar {
+    /* กำหนดความสูงของ navbar ให้คงที่ */
+    height: 100px;
+    /* เปลี่ยนตามต้องการ */
+    display: flex;
+    align-items: center;
+    /* จัดแนวโลโก้ในแนวกลาง */
+}
+
+.bi-house-fill::before {
+    margin-left: 55vh;
+}
+
+.brand-logo {
+    height: 20vh;
+    /* ทำให้ความสูงของโลโก้เต็มพื้นที่ของ navbar */
+    width: auto;
+    /* ปรับขนาดความกว้างให้คงที่ตามอัตราส่วน */
+    max-width: 200px;
+    /* กำหนดความกว้างสูงสุดตามต้องการ */
+}
+
+.logo-img {
+    margin-left: 4vh;
+
+
+}
+
+.bg-light {
+    --bs-bg-opacity: 1;
+    background: linear-gradient(to bottom, #000000, #0000002b) !important;
+    border: none !important;
+    /* กำจัดเส้นขอบ */
+}
+
+.nav-link {
+    font-size: 40px;
+    color: aliceblue;
+
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+#loading-message {
+    color: white;
+    font-size: 75px;
+    /* ขนาดตัวหนังสือ */
+    font-family: "Sriracha", cursive;
+    /* ฟอนต์ Sriracha */
+    font-weight: 400;
+    /* น้ำหนักตัวหนังสือ */
+    animation: pulse 1.5s infinite;
+    /* การเคลื่อนไหว */
+}
+
+/* CSS Animation สำหรับข้อความ */
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+}
+
+
+label[for="mapClick"],
+label[for="mapZoom"],
+label[for="metalRoof"],
+label[for="concreteRoof"],
+label[for="cementRoof"],
+label[for="otherRoof"],
+label[for="totalRoof"] {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 17px;
+    color: #000000;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: 600;
+}
+
+
+#mapClick,
+#mapZoom,
+#metalRoof,
+#concreteRoof,
+#cementRoof,
+#otherRoof,
+#totalroof {
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    font-weight: 600;
+    border: 4px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+
+
+.icon-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    padding: 5px;
+    border-radius: 4px;
+    z-index: 1;
+    /* ให้อยู่เหนือเนื้อหาของ info-box */
+}
+
+.info-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding-top: 36px;
+    padding-bottom: 0px;
+    border-top: 0px solid #ddd;
+}
+
+#calculateRoof {
+    background-color: #4CAF50;
+    /* สีพื้นหลังเขียว */
+    color: white;
+    /* สีตัวอักษร */
+    padding: 15px 32px;
+    /* ขนาด padding ภายในปุ่ม */
+    text-align: center;
+    /* จัดแนวตัวอักษรให้อยู่ตรงกลาง */
+    text-decoration: none;
+    /* ลบขีดเส้นใต้ */
+    display: inline-block;
+    /* จัดรูปแบบปุ่มเป็นแบบบล็อค */
+    font-size: 16px;
+    /* ขนาดตัวอักษร */
+    margin: 17px 2px;
+
+    margin-left: 10px;
+    /* ช่องว่างรอบปุ่ม */
+    border: none;
+    /* ลบเส้นขอบ */
+    border-radius: 12px;
+    /* มุมปุ่มมน */
+    cursor: pointer;
+    /* เปลี่ยนเคอร์เซอร์เมื่อชี้ที่ปุ่ม */
+    transition: background-color 0.3s ease;
+    /* เอฟเฟกต์เปลี่ยนสีพื้นหลังแบบนุ่มนวล */
+}
+
+#calculateRoof:hover {
+    background-color: #45a049;
+    /* เปลี่ยนสีเมื่อ hover */
+}
+
+.leaflet-pm-toolbar .button-container:last-child a.leaflet-buttons-control-button {
+    border-bottom: none;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 213px;
+    height: 40px;
+    /* text-align: center; */
+}
+
+.leaflet-pm-toolbar .leaflet-pm-icon-rectangle {
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%22800px%22 height%3D%22800px%22 viewBox%3D%220%200%2024%2024%22%3E%3Cpath d%3D%22M1%203v18h22V3zm21%2017H2V4h20z%22%2F%3E%3Cpath opacity%3D%22.25%22 d%3D%22M2%204h20v16H2z%22%2F%3E%3Cpath fill%3D%22none%22 d%3D%22M0%200h24v24H0z%22%2F%3E%3C%2Fsvg%3E');
+    margin-left: 145px;
+}
+
+
+.leaflet-pm-toolbar .leaflet-pm-icon-rectangle::before {
+    content: 'คลิ๊กที่นี่เพื่อวาด';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    font-size: 14px;
+    font-family: 'Noto Sans Thai', sans-serif;
+    color: #333;
+    font-weight: 500;
+}
+
+.leaflet-pm-toolbar .button-container:last-child a.leaflet-buttons-control-button {
+    border-bottom: none;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 213px;
+    height: 40px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 13px;
+}
+
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+    border: 0px solid rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+}

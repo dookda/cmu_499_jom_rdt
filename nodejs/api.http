@@ -1,0 +1,6 @@
+GET http://localhost:3000/api/test/5678
+
+
+###
+
+GET http://localhost:5100/api/bbox/1.00/1.00/2.00/2.00

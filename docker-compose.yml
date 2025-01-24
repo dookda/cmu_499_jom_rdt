@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # postgis:
+  #   image: postgis/postgis:latest
+  #   container_name: rdt_postgis
+  #   ports:
+  #     - "5437:5432"
+  #   environment:
+  #     # POSTGRES_DB: geodb
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: 1234
+  #   volumes:
+  #     - ./postgis:/docker-entrypoint-initdb.d
+
+  python:
+    image: giswqs/segment-geospatial:latest
+    container_name: rdt_python
+    working_dir: /app
+    # depends_on:
+    #   - postgis
+    ports:
+      - "5200:5200"
+    volumes:
+      - ./python:/app
+    command: /bin/bash -c "pip install -r requirements.txt && python app.py"
+
+  nodejs:
+    image: node:latest
+    container_name: rdt_nodejs
+    working_dir: /app
+    # depends_on:
+    #   - postgis
+    ports:
+      - "3400:3400"
+    volumes:
+      - ./nodejs:/app
+      - ./python/data:/app/data
+    command: /bin/bash -c "npm install && npm i -g nodemon && nodemon app.js"
+
+  # geoserver:
+  #   image: docker.osgeo.org/geoserver:2.26.x
+  #   container_name: geoserver
+  #   environment:
+  #     - GEOSERVER_ADMIN_USER=admin
+  #     - GEOSERVER_ADMIN_PASSWORD=geoserver
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./geoserver/data_dir:/opt/geoserver_data
+  #   restart: unless-stopped
+
+  geoserver:
+    image: tomcat:8-jre11
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./geoserver:/usr/local/tomcat/webapps/
+      # - tomcat-data:/usr/local/tomcat/webapps
+    environment:
+      - JAVA_OPTS=-Xmx1024M
+      - GEOSERVER_HOME=/usr/local/tomcat/webapps/geoserver

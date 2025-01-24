@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.KASIDIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <link rel="icon" type="image/x-icon" href="image/2.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="TYK.css">
+</head>
+
+<body>
+
+    <section class="header">
+        <nav class="nav1">
+            <a href="index.html"><img src="image/logo2-1.png"></a>
+            <div class="nav-link">
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">ABOUT</a></li>
+
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="text-box">
+            <h1>Roof Material Segment</h1>
+            <p>โมเดลการจำแนกประเภทวัสดุหลังคาและวิเคราะห์การสะท้อนพลังงาน <br> โดยใช้เทคโนโลยีการเรียนรู้เชิงลึก Deep
+                Learning บนภาพดาวเทียมรายละเอียดสูง</p>
+
+        </div>
+    </section>
+
+    <!--Course-->
+    <section class="course">
+        <h1>คู่มือการใช้งานเบื้องต้น</h1>
+
+        <div class="row">
+            <div class="course-col">
+                <video width="100%" height="auto" autoplay loop muted>
+                    <source src="FirstWEB.mp4" type="video/mp4">
+
+                </video>
+                <h3>ขั้นตอนที่ 1 </h3>
+                <p>กดปุ่ม เริ่มต้นการใช้งาน เพื่อเริ่มต้นใช้งานโมเดล <br> **กรุณาอ่านข้อแนะนำโมเดลก่อนเริ่มต้นใช้งาน**
+                </p>
+            </div>
+            <div class="course-col">
+                <video width="100%" height="auto" autoplay loop muted>
+                    <source src="SecondWEB.mp4" type="video/mp4">
+
+                </video>
+                <h3>ขั้นตอนที่ 2 </h3>
+                <p>ให้ผู้ใช้กด "คลิ๊กที่นี่เพื่อวาด" เพื่อนำมาวาดรูปสี่เหลี่ยมปิด (Polygon) จากนั้นรอการประมวลผล
+                </p>
+            </div>
+            <div class="course-col">
+                <img src="result.jpg">
+
+                <h3>ขั้นตอนที่ 3 </h3>
+                <p>ผู้ใช้จะได้ผลลัพธ์จากการจำแนกประเภทวัสดุหลังคาพร้อมทั้งจำนวนหลังคาแต่ละประเภท
+                    โดยจะแสดงอยู่ตำแหน่งด้านขวาของจอ <br> ผู้ใช้สามารถ Download ข้อมูลเพื่อนำไปใช้งานต่อไป
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="Footer">
+        <nav class="nav2">
+            <a href="index.html"><img src="image/logo2-1.png"></a>
+
+        </nav>
+
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">ประเภทของข้อมูลที่จะได้รับ</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">Shapefile<small
+                                    class="text-body-secondary fw-light">(.shp)</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>ผู้ใช้งานจะได้รับข้อมูลจากการกด Download ในลักษณะดิจิทัลไฟล์ Shapefile </li>
+                                <li>**หมายเหตุ** ข้อมูลการ Download Shapefile จะเป็นข้อมูลที่ผู้ใช้งานวาดล่าสุดเท่านั้น
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">ข้อแนะนำการใช้งานโมเดล</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">ระดับการซูม 18 </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>เพื่อให้ได้ข้อมูลที่มีความแม่นยำและใช้เวลาประมวลผลที่รวดเร็วและมีประสิทธิภาพ</li>
+                                <li> ควรใช้ระดับการซูมอยู่ที่ 18 โดยสามารถดูได้จากกรอบสี่เหลี่ยมด้านขวามือ (Zoom Level)
+                                </li>
+                            </ul>
+                            <h1 class="card-title pricing-card-title">ขนาดกรอบการวาด </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>ควรวาดในลักษณะ 4 ช่องกริดแบบจัตุรัส <br>
+                                    จะทำให้ได้ข้อมูลที่มีความครอบคลุมและถูกต้อง <br>
+                                    รวมถึงใช้ระยะเวลาในการประมวลน้อย</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Roof Material Segment</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">พร้อมเริ่มต้นใช้งานตอนนี้ ?<small
+                                    class="text-body-secondary fw-light"></small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <div class="frame">
+                                    <a href="webmap.html" class="custom-btn btn-11">เริ่มต้นใช้งาน</a>
+                                </div>
+                                <li>**หมายเหตุ** เมื่อผู้ใช้ต้องการกลับมาสู่หน้าหลักสามารถกดได้ที่ Logo (TRIYAKUL.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+</html>
