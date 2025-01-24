@@ -16,7 +16,7 @@ services:
   python:
     container_name: rdt_python
     build:
-      context: .
+      context: ./python
       dockerfile: Dockerfile
     working_dir: /app
     ports:
