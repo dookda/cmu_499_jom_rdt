@@ -6,6 +6,7 @@ USER root
 
 # Install the required dependency
 RUN apt-get update && apt-get install -y libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install libgl1-mesa-glx
 
 # Switch back to the original user if needed 
 # (the base image might have used a specific user for security)
