@@ -37,7 +37,6 @@ services:
       - ./nodejs:/app
       - ./python/data:/app/data
     command: /bin/bash -c "npm install && npm i -g nodemon && nodemon app.js"
-
   # geoserver:
   #   image: docker.osgeo.org/geoserver:2.26.x
   #   container_name: geoserver
@@ -50,13 +49,12 @@ services:
   #     - ./geoserver/data_dir:/opt/geoserver_data
   #   restart: unless-stopped
 
-  geoserver:
-    image: tomcat:8-jre11
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./geoserver:/usr/local/tomcat/webapps/
-      # - tomcat-data:/usr/local/tomcat/webapps
-    environment:
-      - JAVA_OPTS=-Xmx1024M
-      - GEOSERVER_HOME=/usr/local/tomcat/webapps/geoserver
+  # geoserver:
+  #   image: tomcat:8-jre11
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./geoserver:/usr/local/tomcat/webapps/
+  #   environment:
+  #     - JAVA_OPTS=-Xmx1024M
+  #     - GEOSERVER_HOME=/usr/local/tomcat/webapps/geoserver
